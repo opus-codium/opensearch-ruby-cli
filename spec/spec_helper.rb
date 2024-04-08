@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "opensearch/ruby/cli"
+require "opensearch/cli"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

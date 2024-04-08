@@ -1,0 +1,13 @@
+module OpenSearch
+  class CLI < OptionParser
+    VERSION: ::String
+
+    def initialize: (?::String banner, ?::Integer width, ?::String indent) { (CLI) -> void } -> void
+
+    def client: () -> ::OpenSearch::Client
+
+    private
+
+    def add_opensearch_options: () -> void
+  end
+end
