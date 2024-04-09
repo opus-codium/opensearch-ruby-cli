@@ -1,8 +1,6 @@
-# Opensearch::Ruby::Cli
+# OpenSearch::CLI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/opensearch/ruby/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A wrapper around Ruby's OptionParser to to connect to OpenSearch.
 
 ## Installation
 
@@ -16,7 +14,35 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+Basic usage:
+
+```ruby
+require 'opensearch/cli'
+
+cli = OpenSearch::CLI.new
+cli.parse!(ARGV)
+cli.client.search(index: 'my-index', body: { query: { match_all: {} } })
+```
+
+Advanced usage:
+
+```ruby
+require 'opensearch/cli'
+
+options = {
+  index: 'default'
+}
+
+cli = OpenSearch::CLI.new do |opts|
+  opts.separator ''
+  opts.separator 'Options:'
+  opts.on('-i', '--index=INDEX', 'Work on INDEX') do |index|
+    options[:index] = index
+  end
+end
+cli.parse!(ARGV)
+cli.client.search(index: options[:index], body: { query: { match_all: {} } })
+```
 
 ## Development
 
@@ -26,7 +52,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/opensearch-ruby-cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/opensearch-ruby-cli/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/opus-codium/opensearch-ruby-cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/opus-codium/opensearch-ruby-cli/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -34,4 +60,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Opensearch::Ruby::Cli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/opensearch-ruby-cli/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Opensearch::Ruby::Cli project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/opus-codium/opensearch-ruby-cli/blob/main/CODE_OF_CONDUCT.md).
