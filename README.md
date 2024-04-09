@@ -2,6 +2,19 @@
 
 A wrapper around Ruby's OptionParser to to connect to OpenSearch.
 
+It provide options similar to the `curl` command line tool and handle creation of a client to connect to an OpenSearch cluster from your CLI application.
+
+```
+OpenSearch options:
+        --url=URL                    URL of the OpenSearch instance
+        --cacert=CERTIFICATE         Verify certificate against the provided CERTIFICATE
+        --cert=CERTIFICATE           Use the provided CERTIFICATE for TLS client authentication
+        --key=KEY                    Use the provided KEY for TLS client authentication
+    -k, --insecure                   Skip certificate verification against trust store
+    -u, --user=USER[:PASSWORD]       Specify the user name and password to use for authentication
+    -v, --verbose                    Show what's going on "under the hood"
+```
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -40,6 +53,7 @@ cli = OpenSearch::CLI.new do |opts|
     options[:index] = index
   end
 end
+cli.load # Load user defaults
 cli.parse!(ARGV)
 cli.client.search(index: options[:index], body: { query: { match_all: {} } })
 ```
