@@ -10,3 +10,7 @@ gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
 
 gem "standard", "~> 1.3"
+
+group :development do
+  gem "steep", require: false
+end

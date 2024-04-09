@@ -50,7 +50,8 @@ module OpenSearch
           require "io/console"
 
           print "Enter password for user '#{@opensearch_options[:user]}': "
-          @opensearch_options[:password] = $stdin.noecho(&:gets).chomp
+          @opensearch_options[:password] = $stdin.noecho(&:gets)
+          @opensearch_options[:password].chomp! if @opensearch_options[:password]
         end
       end
       on("-v", "--verbose", %(Show what's going on "under the hood")) do

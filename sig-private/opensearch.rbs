@@ -1,0 +1,5 @@
+module OpenSearch
+  class Client
+    def initialize: (Hash[Symbol, untyped]) -> void
+  end
+end
