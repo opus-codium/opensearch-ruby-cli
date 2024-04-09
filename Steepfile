@@ -9,10 +9,10 @@ target :lib do
   library "uri"
 end
 
-#target :test do
-#  signature "sig", "sig-private"
+# target :test do
+#   signature "sig", "sig-private"
 #
-#  check "spec"
+#   check "spec"
 #
-#  library "optparse"
-#end
+#   library "optparse"
+# end
