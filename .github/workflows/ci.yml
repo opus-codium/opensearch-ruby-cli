@@ -20,6 +20,8 @@ jobs:
           bundler-cache: true
       - name: Run static code analysis
         run: bundle exec rake standard
+      - name: Check static type information
+        run: bundle exec steep check
   unit:
     runs-on: ubuntu-latest
     needs: standard
