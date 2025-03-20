@@ -6,7 +6,7 @@ require "uri"
 
 module OpenSearch
   class CLI < OptionParser
-    VERSION = "1.0.0"
+    VERSION = "1.0.1"
 
     def initialize(banner = nil, width = 32, indent = " " * 4, &block)
       @opensearch_options = {
