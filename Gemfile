@@ -14,5 +14,8 @@ gem "rspec", "~> 3.0"
 gem "standard", "~> 1.3"
 
 group :development do
-  gem "steep", require: false
+  # FIXME: Relax this version when the stardand gem can cope with empty collection annotations
+  # https://github.com/soutaro/steep/pull/1338
+  # https://github.com/standardrb/standard/pull/656
+  gem "steep", "< 1.9.0", require: false
 end
