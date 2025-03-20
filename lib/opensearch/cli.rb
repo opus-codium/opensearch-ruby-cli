@@ -2,6 +2,7 @@
 
 require "openssl"
 require "optparse"
+require "uri"
 
 module OpenSearch
   class CLI < OptionParser
