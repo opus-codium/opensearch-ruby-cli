@@ -2,6 +2,7 @@
 
 require "openssl"
 require "optparse"
+require "uri"
 
 module OpenSearch
   class CLI < OptionParser
@@ -12,7 +13,7 @@ module OpenSearch
         host: "https://localhost:9200",
         transport_options: {ssl: {}}
       }
-      super(banner, width, indent) {}
+      super {}
 
       add_opensearch_options
 
